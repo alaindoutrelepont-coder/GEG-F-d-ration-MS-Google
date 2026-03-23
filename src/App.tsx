@@ -119,7 +119,6 @@ export default function App() {
                 </div>
                 <div>
                   <h2 className="text-3xl font-display font-bold text-secondary-dark">{activePhase.title}</h2>
-                  <p className="text-secondary mt-1">Suivez les étapes ci-dessous pour compléter cette phase.</p>
                 </div>
               </div>
 

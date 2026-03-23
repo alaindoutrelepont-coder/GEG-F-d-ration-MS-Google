@@ -39,7 +39,7 @@ export default function App() {
       {/* Mobile Header */}
       <div className="md:hidden bg-white border-b border-secondary/10 p-4 flex justify-between items-center sticky top-0 z-50">
         <h1 className="font-display font-bold text-secondary-dark">
-          <span className="text-primary">GEG-FWB</span> : Guide Fédération
+          Guide Fédération
         </h1>
         <button 
           className="p-2 text-secondary-dark"
@@ -68,7 +68,7 @@ export default function App() {
             <span className="text-xs font-bold text-secondary uppercase tracking-widest">Google for Education</span>
           </div>
           <h1 className="text-2xl font-display font-bold text-secondary-dark leading-tight">
-            <span className="text-primary">GEG-FWB</span> : Guide de Mise en Place de la Fédération d'Identité
+            Guide de Mise en Place de la Fédération d'Identité
           </h1>
         </div>
 
@@ -123,9 +123,10 @@ export default function App() {
               </div>
 
               {activePhase.intro && (
-                <p className="mb-8 text-secondary leading-relaxed italic px-2">
-                  {activePhase.intro}
-                </p>
+                <div 
+                  className="mb-8 text-secondary leading-relaxed italic px-2" 
+                  dangerouslySetInnerHTML={{ __html: activePhase.intro }} 
+                />
               )}
 
               <div className="space-y-8">

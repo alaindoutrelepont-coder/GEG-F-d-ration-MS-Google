@@ -27,7 +27,7 @@ export const PHASES: Phase[] = [
     id: 'benefits',
     title: 'Bénéfices Clés du Déploiement',
     icon: 'Zap',
-    intro: 'Guide interactif basé sur les procédures de déploiement Google for Education & Microsoft Entra ID. Réalisé en collaboration avec Guillaume Duchateau de l\'AR de Fragnée.',
+    intro: 'Guide interactif basé sur les procédures de déploiement Google for Education & Microsoft Entra ID. Réalisé en collaboration avec Guillaume Duchateau de l\'AR de Fragnée.<br /><br />En complément de ce guide, n\'hésitez pas à consulter <a href="https://docs.google.com/document/d/12rhmsCZaBvjXWSrc4CoGrierUcKkPu7CVJtnrX6-sIk/edit?tab=t.27en7wjmvymm" target="_blank" rel="noopener noreferrer" class="text-primary font-bold hover:underline">le document réalisé par Samuel Musique</a> dans lequel vous trouverez d\'autres trucs & astuces.',
     steps: [
       {
         title: 'Avantages de la Fédération',

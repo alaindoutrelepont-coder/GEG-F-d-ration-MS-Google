@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Settings, 
   Users, 
@@ -31,6 +31,10 @@ const IconMap: Record<string, React.ReactNode> = {
 export default function App() {
   const [activePhaseId, setActivePhaseId] = useState<string>(PHASES[0].id);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activePhaseId]);
 
   const activePhase = PHASES.find(p => p.id === activePhaseId) || PHASES[0];
 
@@ -205,14 +209,23 @@ export default function App() {
                           <p className="opacity-90">
                             {step.warning}
                             {step.warningLink && (
-                              <a 
-                                href={step.warningLink.url} 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="underline font-bold hover:text-google-red transition-colors ml-1"
-                              >
-                                {step.warningLink.label}
-                              </a>
+                              step.warningLink.phaseId ? (
+                                <button
+                                  onClick={() => setActivePhaseId(step.warningLink!.phaseId!)}
+                                  className="underline font-bold hover:text-google-red transition-colors ml-1 cursor-pointer"
+                                >
+                                  {step.warningLink.label}
+                                </button>
+                              ) : (
+                                <a 
+                                  href={step.warningLink.url} 
+                                  target="_blank" 
+                                  rel="noopener noreferrer"
+                                  className="underline font-bold hover:text-google-red transition-colors ml-1"
+                                >
+                                  {step.warningLink.label}
+                                </a>
+                              )
                             )}
                             .
                           </p>

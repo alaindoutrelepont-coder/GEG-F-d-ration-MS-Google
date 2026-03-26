@@ -10,7 +10,7 @@ export interface Step {
   details: string[];
   tips?: string[];
   warning?: string;
-  warningLink?: { label: string; url: string };
+  warningLink?: { label: string; url?: string; phaseId?: string };
   links?: StepLink[];
 }
 
@@ -67,10 +67,10 @@ export const PHASES: Phase[] = [
             url: 'https://sites.google.com/edunum.be/geg-fwb/d%C3%A9marrer-avec-google-workspace/manuel-interactif'
           }
         ],
-        warning: 'Si vous recevez un message disant "Ce domaine est déjà utilisé", ouvrez un ticket en complétant ',
+        warning: 'Si vous recevez un message disant "Ce domaine est déjà utilisé", ',
         warningLink: {
-          label: 'ce formulaire',
-          url: 'https://toolbox.googleapps.com/apps/recovery/domain_in_use?visit_id=638792873469123919-2257290525&rd=1'
+          label: 'rendez-vous à la phase 8',
+          phaseId: 'domain-contestation'
         }
       },
       {
@@ -256,6 +256,77 @@ export const PHASES: Phase[] = [
         ],
         tips: [
           'Cela force Microsoft à réévaluer chaque compte par rapport à la nouvelle configuration.'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'domain-contestation',
+    title: 'Phase 8 : Procédure de contestation de domaine',
+    icon: 'ShieldCheck',
+    intro: "Cette procédure vous permettra de libérer votre domaine pour l'inscription à Google for Education. Elle nécessite une vérification de la propriété du domaine via DNS et peut prendre jusqu'à 72 heures, le temps que les administrateurs actuels puissent contester la prise de contrôle.<br /><br />Cela peut être utile si quelqu’un a créé une adresse Gmail grand public en utilisant le nom de domaine de votre école par exemple.",
+    steps: [
+      {
+        title: 'Créer un ticket d\'assistance',
+        description: 'Veuillez compléter le Formulaire de contestation de domaine.',
+        details: [
+          'Ajoutez le domaine que vous souhaitez libérer.',
+          'Ajoutez vos coordonnées.',
+          '<strong>Note</strong> : Utilisez un courriel hors domaine (par exemple, Gmail) pour la communication, car l\'adresse électronique du domaine peut ne pas être fonctionnelle pour les tickets d\'assistance.'
+        ],
+        links: [
+          {
+            label: 'Formulaire de contestation de domaine',
+            url: 'https://toolbox.googleapps.com/apps/recovery/domain_in_use'
+          }
+        ]
+      },
+      {
+        title: 'Option d\'inscription',
+        description: 'Sélectionnez la deuxième option ”Non, c\'est la première fois que je m\'inscris avec ce domaine.”',
+        details: []
+      },
+      {
+        title: 'Vérification DNS',
+        description: 'Prouver la propriété du domaine via un enregistrement CNAME ou TXT.',
+        details: [
+          'Ajoutez l\'enregistrement fourni dans votre console DNS.',
+          'Une fois l\'enregistrement saisi et après avoir attendu sa propagation, cliquez sur <strong>Vérifier à nouveau</strong>.'
+        ],
+        tips: [
+          'Vous pouvez choisir d’ajouter un enregistrement CNAME ou TXT.',
+          'Vous recevrez un courriel contenant le numéro du ticket ouvert. Même si vous fermez la page, vous pourrez toujours le récupérer.'
+        ]
+      },
+      {
+        title: 'Délai de contestation (72h)',
+        description: 'Processus de validation et d\'attente.',
+        details: [
+          'Un processus de 72 heures est lancé au cours duquel les administrateurs actuels sont informés.',
+          'L\'assistance Google tentera de les contacter. En l\'absence de réponse (ou si la propriété est confirmée par DNS), l\'assistance libérera le domaine.'
+        ]
+      },
+      {
+        title: 'Résultat et Réinscription',
+        description: 'Libération du domaine pour Workspace for Education.',
+        details: [
+          'Les comptes existants deviennent des comptes consommateurs non gérés.',
+          'Le domaine est libéré pour une nouvelle inscription à Workspace for Education.'
+        ]
+      },
+      {
+        title: 'Utilisateurs non gérés',
+        description: 'Gérer les comptes créés individuellement avec le domaine de l\'organisation.',
+        details: [
+          'Certains employés ou étudiants peuvent utiliser des comptes non gérés.',
+          'Cela peut entraîner des conflits de noms lors de la création de comptes gérés.',
+          'Une fois votre Workspace approuvé, identifiez et importez ces comptes.'
+        ],
+        links: [
+          {
+            label: 'Guide : Trouver et ajouter des utilisateurs non gérés',
+            url: 'https://knowledge.workspace.google.com/admin/users/use-the-transfer-tool-to-migrate-unmanaged-users?visit_id=639062464131598155-2395291733&rd=1&hl=fr'
+          }
         ]
       }
     ]
